@@ -8,14 +8,16 @@ let n = 0;
 let queue = [];
 btnCreateNumber.onclick = () => {
   n += 1;
-  queue.push(n); //入队
+  // queue.push(n);
+  queue.push.call(queue, n); //入队
   spanNewNumber.innerText = n; //实现 取号后显示在当前号码的span里
   //   spanQueue.innerText = queue.toString();//这个方法也是可以的
   //   因为queue是个数组，所以需要序列化
   spanQueue.innerText = JSON.stringify(queue);
 };
 btnCallNumber.onclick = () => {
-  let m = queue.shift(); //出队
+  // queue.shift()
+  let m = queue.shift.call(queue); //出队
   if (m === undefined) {
     alert("没有号了");
     return;
